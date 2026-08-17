@@ -6,39 +6,32 @@
 <title>StickerPro Studio</title>
 
 <style>
-:root{
-  --bg:#0b0c10;
-  --panel:#111319;
-  --panel2:#171923;
-  --line:#272a35;
-  --text:#f7f7fb;
-  --muted:#9296a6;
-  --accent:#7c5cff;
-  --accent2:#9a82ff;
-  --danger:#ff5c75;
-}
-
 *{box-sizing:border-box}
+
+:root{
+  --bg:#f6f7fb;
+  --panel:#fff;
+  --line:#e7e8ee;
+  --text:#171923;
+  --muted:#747887;
+  --accent:#6c4cff;
+  --accent-light:#eeeaff;
+}
 
 body{
   margin:0;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:var(--bg);
   color:var(--text);
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  overflow-x:hidden;
 }
 
-button,input,select{
-  font:inherit;
-}
+button,input,select{font:inherit}
 
-button{
-  cursor:pointer;
-}
+button{cursor:pointer}
 
 .topbar{
   height:64px;
-  background:#0d0e13;
+  background:#fff;
   border-bottom:1px solid var(--line);
   display:flex;
   align-items:center;
@@ -46,134 +39,119 @@ button{
   padding:0 18px;
   position:sticky;
   top:0;
-  z-index:20;
+  z-index:50;
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap:10px;
-  font-size:20px;
+  gap:9px;
   font-weight:900;
+  font-size:20px;
 }
 
-.brand-mark{
+.logo{
   width:34px;
   height:34px;
   border-radius:10px;
-  background:linear-gradient(135deg,#7c5cff,#a78bfa);
+  background:linear-gradient(135deg,#6c4cff,#9b82ff);
+  color:white;
   display:grid;
   place-items:center;
 }
 
-.brand span{
-  color:#a28cff;
-}
+.brand span{color:var(--accent)}
 
 .top-actions{
   display:flex;
-  align-items:center;
   gap:8px;
 }
 
 .top-btn{
   border:1px solid var(--line);
-  background:#15161d;
-  color:#ddd;
+  background:#fff;
   padding:9px 13px;
   border-radius:9px;
 }
 
-.top-btn:hover{
-  background:#20222c;
-}
-
-.export-btn{
+.export{
+  border:0;
   background:var(--accent);
   color:white;
-  border:0;
   padding:10px 17px;
   border-radius:9px;
   font-weight:800;
 }
 
-.app{
+.layout{
   display:grid;
-  grid-template-columns:76px 300px 1fr 280px;
-  min-height:calc(100vh - 64px);
+  grid-template-columns:72px 270px 1fr 285px;
+  height:calc(100vh - 64px);
 }
 
-.toolbar{
-  background:#0d0e13;
+.tools{
+  background:#fff;
   border-right:1px solid var(--line);
-  padding:12px 8px;
-  display:flex;
-  flex-direction:column;
-  gap:8px;
+  padding:12px 7px;
 }
 
 .tool{
+  width:100%;
   border:0;
   background:transparent;
-  color:#8f93a4;
+  padding:11px 4px;
   border-radius:10px;
-  padding:10px 4px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:5px;
+  color:var(--muted);
+  margin-bottom:5px;
   font-size:11px;
 }
 
-.tool-icon{
+.tool span{
+  display:block;
   font-size:21px;
+  margin-bottom:3px;
 }
 
 .tool:hover,
 .tool.active{
-  background:#201c38;
-  color:#fff;
+  color:var(--accent);
+  background:var(--accent-light);
 }
 
-.left-panel,
-.right-panel{
-  background:var(--panel);
+.panel{
+  background:#fff;
   border-right:1px solid var(--line);
   padding:18px;
   overflow:auto;
 }
 
-.right-panel{
+.panel.right{
   border-right:0;
   border-left:1px solid var(--line);
 }
 
-.panel-title{
-  font-size:15px;
-  font-weight:800;
-  margin-bottom:18px;
+.panel h3{
+  margin:0 0 18px;
+  font-size:16px;
 }
 
-.panel-section{
-  border-bottom:1px solid var(--line);
+.section{
   padding-bottom:18px;
   margin-bottom:18px;
+  border-bottom:1px solid var(--line);
 }
 
 .label{
-  display:flex;
-  justify-content:space-between;
-  color:#c8cad4;
   font-size:12px;
-  font-weight:700;
+  font-weight:800;
   margin-bottom:7px;
+  color:#555967;
 }
 
 .control{
   width:100%;
-  background:#191b24;
-  color:white;
-  border:1px solid #292c38;
+  border:1px solid #dddfe7;
+  background:#fff;
   border-radius:9px;
   padding:10px;
   outline:none;
@@ -183,53 +161,55 @@ button{
   border-color:var(--accent);
 }
 
-input[type="color"]{
-  padding:3px;
-  height:40px;
-}
-
-input[type="range"]{
-  padding:0;
-  accent-color:var(--accent);
-}
-
-.control-row{
+.row{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:9px;
+  gap:8px;
+}
+
+.tool-action{
+  width:100%;
+  border:1px solid var(--line);
+  background:#fff;
+  padding:11px;
+  border-radius:9px;
+  margin-bottom:8px;
+  text-align:left;
+}
+
+.tool-action:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+.primary{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:white;
+}
+
+.danger{
+  color:#e84b62;
 }
 
 .workspace{
-  background:
-    radial-gradient(circle at 50% 35%,#252833 0,#15171e 35%,#0c0d11 75%);
+  min-width:0;
   display:flex;
   flex-direction:column;
-  min-width:0;
+  background:
+    radial-gradient(circle at 50% 35%,#fff 0,#f2f2f6 40%,#e8e9ee 100%);
 }
 
 .workspace-head{
-  height:50px;
+  height:48px;
   border-bottom:1px solid var(--line);
+  background:#fff9;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 18px;
+  padding:0 15px;
   color:var(--muted);
   font-size:12px;
-}
-
-.workspace-tools{
-  display:flex;
-  gap:7px;
-}
-
-.small-btn{
-  border:1px solid var(--line);
-  background:#15171e;
-  color:#bbb;
-  width:32px;
-  height:30px;
-  border-radius:7px;
 }
 
 .canvas-area{
@@ -237,196 +217,171 @@ input[type="range"]{
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:35px;
   overflow:auto;
+  padding:30px;
 }
 
 .canvas-wrap{
   position:relative;
-  box-shadow:0 25px 80px #0008;
+  width:650px;
+  max-width:80%;
+  box-shadow:0 15px 45px #0002;
   border-radius:12px;
 }
 
 canvas{
-  display:block;
-  width:min(650px,75vw);
+  width:100%;
   height:auto;
-  background:white;
+  display:block;
+  background:#fff;
   border-radius:12px;
 }
 
-.empty{
-  position:absolute;
-  inset:0;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  pointer-events:none;
-  color:#777b89;
-}
-
-.empty-icon{
-  font-size:42px;
-  margin-bottom:10px;
-}
-
-.bottom-bar{
-  height:48px;
+.statusbar{
+  height:44px;
+  background:#fff;
   border-top:1px solid var(--line);
   display:flex;
   align-items:center;
   justify-content:center;
   gap:15px;
-  color:#888;
+  color:var(--muted);
   font-size:12px;
 }
 
-.upload-box{
-  border:1px dashed #3b3e4c;
-  background:#15171e;
-  border-radius:10px;
-  padding:20px 10px;
-  text-align:center;
+.layers{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.layer{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:9px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  background:#fff;
   cursor:pointer;
 }
 
-.upload-box:hover{
+.layer.selected{
   border-color:var(--accent);
+  background:var(--accent-light);
 }
 
-.upload-box input{
-  display:none;
+.layer-icon{
+  width:28px;
+  height:28px;
+  display:grid;
+  place-items:center;
+  background:#f0f0f4;
+  border-radius:7px;
 }
 
-.upload-icon{
-  font-size:30px;
-  margin-bottom:6px;
-}
-
-.upload-box strong{
-  display:block;
-  font-size:13px;
-}
-
-.upload-box small{
-  color:#777b89;
-}
-
-.action{
-  width:100%;
-  padding:11px;
-  border:0;
-  border-radius:9px;
-  background:#20222c;
-  color:#ddd;
-  margin-top:8px;
-}
-
-.action:hover{
-  background:#2b2e3a;
-}
-
-.primary{
-  background:var(--accent);
-  color:white;
-}
-
-.primary:hover{
-  background:var(--accent2);
-}
-
-.danger{
-  color:#ff7187;
-}
-
-.color-line{
-  display:flex;
-  gap:8px;
-}
-
-.color-line input[type=color]{
+.layer-name{
   flex:1;
+  font-size:12px;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
 }
 
-.value{
-  color:#858999;
-  font-size:11px;
+.layer-mini{
+  border:0;
+  background:transparent;
+  color:#888;
+  padding:3px;
+}
+
+.empty{
+  color:#888;
+  text-align:center;
 }
 
 .mobile-tools{
   display:none;
 }
 
+input[type="color"]{
+  padding:3px;
+  height:42px;
+}
+
+input[type="range"]{
+  padding:0;
+  accent-color:var(--accent);
+}
+
 @media(max-width:1100px){
-  .app{
+
+  .layout{
     grid-template-columns:70px 250px 1fr;
   }
 
-  .right-panel{
+  .right{
     display:none;
   }
 }
 
-@media(max-width:760px){
+@media(max-width:700px){
+
   .topbar{
     height:58px;
   }
 
-  .top-btn{
+  .top-actions .top-btn{
     display:none;
   }
 
-  .app{
+  .layout{
     display:block;
-    min-height:calc(100vh - 58px);
+    height:calc(100vh - 58px);
   }
 
-  .toolbar{
-    display:none;
-  }
-
-  .left-panel{
+  .tools,
+  .panel{
     display:none;
   }
 
   .workspace{
-    min-height:calc(100vh - 58px);
-  }
-
-  canvas{
-    width:88vw;
+    height:100%;
   }
 
   .canvas-area{
-    padding:18px 10px 70px;
+    padding:15px;
+    padding-bottom:75px;
+  }
+
+  .canvas-wrap{
+    max-width:96%;
   }
 
   .mobile-tools{
-    display:flex;
     position:fixed;
     bottom:0;
     left:0;
     right:0;
-    height:62px;
-    background:#101117;
+    height:64px;
+    background:#fff;
     border-top:1px solid var(--line);
-    z-index:30;
+    display:flex;
     justify-content:space-around;
     align-items:center;
+    z-index:100;
   }
 
   .mobile-tools button{
-    background:none;
     border:0;
-    color:#aaa;
+    background:none;
+    color:#666;
     font-size:11px;
   }
 
   .mobile-tools span{
     display:block;
     font-size:20px;
-    margin-bottom:2px;
   }
 }
 </style>
@@ -437,54 +392,49 @@ canvas{
 <header class="topbar">
 
   <div class="brand">
-    <div class="brand-mark">✦</div>
+    <div class="logo">✦</div>
     Sticker<span>Pro</span>
   </div>
 
   <div class="top-actions">
+    <button class="top-btn" onclick="undo()">↶ Undo</button>
+    <button class="top-btn" onclick="redo()">↷ Redo</button>
     <button class="top-btn" onclick="newProject()">＋ New</button>
-    <button class="top-btn" onclick="undo()">↶</button>
-    <button class="top-btn" onclick="redo()">↷</button>
-    <button class="top-btn" onclick="resetStudio()">Reset</button>
-    <button class="export-btn" onclick="downloadSticker()">Export PNG</button>
+    <button class="export" onclick="exportPNG()">Export PNG</button>
   </div>
 
 </header>
 
-<div class="app">
 
-  <!-- LEFT TOOLBAR -->
+<div class="layout">
 
-  <aside class="toolbar">
+  <!-- TOOLBAR -->
+
+  <aside class="tools">
 
     <button class="tool active">
-      <span class="tool-icon">▣</span>
+      <span>▣</span>
       Design
     </button>
 
-    <button class="tool" onclick="focusUpload()">
-      <span class="tool-icon">＋</span>
+    <button class="tool" onclick="uploadImage()">
+      <span>＋</span>
       Upload
     </button>
 
-    <button class="tool" onclick="focusText()">
-      <span class="tool-icon">T</span>
+    <button class="tool" onclick="addText()">
+      <span>T</span>
       Text
     </button>
 
     <button class="tool" onclick="addEmoji()">
-      <span class="tool-icon">☺</span>
+      <span>☺</span>
       Emoji
     </button>
 
-    <button class="tool" onclick="cycleShape()">
-      <span class="tool-icon">◇</span>
+    <button class="tool" onclick="addShape()">
+      <span>◇</span>
       Shape
-    </button>
-
-    <button class="tool" onclick="focusBackground()">
-      <span class="tool-icon">◐</span>
-      Color
     </button>
 
   </aside>
@@ -492,357 +442,115 @@ canvas{
 
   <!-- LEFT PANEL -->
 
-  <aside class="left-panel">
+  <aside class="panel">
 
-    <div class="panel-title">Sticker Studio</div>
+    <h3>Sticker Studio</h3>
 
-    <div class="panel-section">
+    <div class="section">
 
-      <div class="label">
-        <span>PHOTO</span>
-      </div>
+      <button class="tool-action primary" onclick="uploadImage()">
+        ＋ Upload Image
+      </button>
 
-      <label class="upload-box">
-        <input id="image" type="file" accept="image/*">
-        <div class="upload-icon">↥</div>
-        <strong>Upload image</strong>
-        <small>PNG, JPG or WEBP</small>
-      </label>
+      <button class="tool-action" onclick="addText()">
+        T Add Text
+      </button>
 
-    </div>
+      <button class="tool-action" onclick="addEmoji()">
+        ☺ Add Emoji
+      </button>
 
-
-    <div class="panel-section">
-
-      <div class="label">
-        <span>TEXT</span>
-      </div>
+      <button class="tool-action" onclick="addShape()">
+        ◇ Add Shape
+      </button>
 
       <input
-        id="text"
-        class="control"
-        value="StickerPro"
-        placeholder="Type your text"
-      >
-
-      <div style="height:10px"></div>
-
-      <select id="font" class="control">
-        <option>Arial</option>
-        <option>Impact</option>
-        <option>Georgia</option>
-        <option>Trebuchet MS</option>
-        <option>Courier New</option>
-        <option>Comic Sans MS</option>
-      </select>
-
-      <div style="height:10px"></div>
-
-      <div class="control-row">
-
-        <input
-          id="textColor"
-          class="control"
-          type="color"
-          value="#7055ff"
-        >
-
-        <input
-          id="outlineColor"
-          class="control"
-          type="color"
-          value="#ffffff"
-        >
-
-      </div>
-
-    </div>
-
-
-    <div class="panel-section">
-
-      <div class="label">
-        <span>TEXT SIZE</span>
-        <span id="sizeValue" class="value">54</span>
-      </div>
-
-      <input
-        id="textSize"
-        class="control"
-        type="range"
-        min="20"
-        max="110"
-        value="54"
-      >
-
-      <div style="height:13px"></div>
-
-      <div class="label">
-        <span>OUTLINE</span>
-        <span id="outlineValue" class="value">5</span>
-      </div>
-
-      <input
-        id="outline"
-        class="control"
-        type="range"
-        min="0"
-        max="20"
-        value="5"
+        id="file"
+        type="file"
+        accept="image/*"
+        hidden
       >
 
     </div>
 
 
-    <div class="panel-section">
+    <div class="section">
 
-      <div class="label">
-        <span>STICKER STYLE</span>
+      <div class="label">LAYERS</div>
+
+      <div id="layers" class="layers">
+        <div class="empty">
+          Add an element to start
+        </div>
       </div>
-
-      <select id="shape" class="control">
-        <option value="rounded">Rounded</option>
-        <option value="circle">Circle</option>
-        <option value="square">Square</option>
-        <option value="star">Star</option>
-      </select>
-
-      <div style="height:10px"></div>
-
-      <div class="label">
-        <span>BACKGROUND</span>
-      </div>
-
-      <input
-        id="bgColor"
-        class="control"
-        type="color"
-        value="#ffffff"
-      >
-
-      <div style="height:10px"></div>
-
-      <div class="label">
-        <span>BORDER</span>
-        <span id="borderValue" class="value">8</span>
-      </div>
-
-      <input
-        id="border"
-        class="control"
-        type="range"
-        min="0"
-        max="20"
-        value="8"
-      >
 
     </div>
 
 
-    <button class="action primary" onclick="downloadSticker()">
-      ↓ Export Sticker
-    </button>
+    <div class="section">
+
+      <div class="label">LAYER ACTIONS</div>
+
+      <button class="tool-action" onclick="moveUp()">
+        ↑ Bring Forward
+      </button>
+
+      <button class="tool-action" onclick="moveDown()">
+        ↓ Send Backward
+      </button>
+
+      <button class="tool-action" onclick="duplicateSelected()">
+        ⧉ Duplicate
+      </button>
+
+      <button class="tool-action danger" onclick="deleteSelected()">
+        × Delete
+      </button>
+
+    </div>
 
   </aside>
 
 
-  <!-- WORKSPACE -->
+  <!-- CANVAS -->
 
   <main class="workspace">
 
     <div class="workspace-head">
-
       <span>Untitled Sticker</span>
-
-      <div class="workspace-tools">
-        <button class="small-btn" onclick="zoomOut()">−</button>
-        <span id="zoomLabel">100%</span>
-        <button class="small-btn" onclick="zoomIn()">＋</button>
-      </div>
-
+      <span>1000 × 1000 px</span>
     </div>
-
 
     <div class="canvas-area">
 
       <div class="canvas-wrap">
-
         <canvas id="canvas" width="1000" height="1000"></canvas>
-
-        <div class="empty" id="emptyState">
-          <div class="empty-icon">✦</div>
-          <strong>Create your sticker</strong>
-          <span>Upload a photo or start with text</span>
-        </div>
-
       </div>
 
     </div>
 
-
-    <div class="bottom-bar">
-      <span>StickerPro Studio</span>
+    <div class="statusbar">
+      <span id="selectedStatus">No layer selected</span>
       <span>•</span>
-      <span>1000 × 1000 px</span>
-      <span>•</span>
-      <span>PNG</span>
+      <span>PNG Export</span>
     </div>
 
   </main>
 
 
-  <!-- RIGHT PROPERTIES -->
+  <!-- RIGHT PANEL -->
 
-  <aside class="right-panel">
+  <aside class="panel right">
 
-    <div class="panel-title">Properties</div>
+    <h3>Properties</h3>
 
-    <div class="panel-section">
+    <div id="properties">
 
-      <div class="label">
-        <span>IMAGE ZOOM</span>
-        <span id="imageZoomValue" class="value">100%</span>
-      </div>
-
-      <input
-        id="imageZoom"
-        class="control"
-        type="range"
-        min="50"
-        max="180"
-        value="100"
-      >
-
-      <div style="height:13px"></div>
-
-      <div class="label">
-        <span>IMAGE ROTATION</span>
-        <span id="imageRotationValue" class="value">0°</span>
-      </div>
-
-      <input
-        id="imageRotation"
-        class="control"
-        type="range"
-        min="-180"
-        max="180"
-        value="0"
-      >
-
-    </div>
-
-
-    <div class="panel-section">
-
-      <div class="label">
-        <span>TEXT POSITION X</span>
-      </div>
-
-      <input
-        id="textX"
-        class="control"
-        type="range"
-        min="100"
-        max="900"
-        value="500"
-      >
-
-      <div style="height:12px"></div>
-
-      <div class="label">
-        <span>TEXT POSITION Y</span>
-      </div>
-
-      <input
-        id="textY"
-        class="control"
-        type="range"
-        min="100"
-        max="900"
-        value="720"
-      >
-
-      <div style="height:12px"></div>
-
-      <div class="label">
-        <span>TEXT ROTATION</span>
-        <span id="textRotationValue" class="value">0°</span>
-      </div>
-
-      <input
-        id="textRotation"
-        class="control"
-        type="range"
-        min="-180"
-        max="180"
-        value="0"
-      >
-
-    </div>
-
-
-    <div class="panel-section">
-
-      <div class="label">
-        <span>TEXT SHADOW</span>
-        <span id="shadowValue" class="value">8</span>
-      </div>
-
-      <input
-        id="shadow"
-        class="control"
-        type="range"
-        min="0"
-        max="30"
-        value="8"
-      >
-
-    </div>
-
-
-    <div class="panel-section">
-
-      <div class="label">
-        <span>EMOJI</span>
-      </div>
-
-      <input
-        id="emoji"
-        class="control"
-        placeholder="🔥"
-        maxlength="3"
-      >
-
-      <div style="height:10px"></div>
-
-      <div class="control-row">
-
-        <input
-          id="emojiSize"
-          class="control"
-          type="range"
-          min="25"
-          max="160"
-          value="75"
-        >
-
-        <input
-          id="emojiColor"
-          class="control"
-          type="color"
-          value="#ffffff"
-        >
-
+      <div class="empty">
+        Select a layer to edit its properties.
       </div>
 
     </div>
-
-
-    <button class="action" onclick="addEmoji()">Add Emoji</button>
-
-    <button class="action danger" onclick="resetStudio()">
-      Reset Design
-    </button>
 
   </aside>
 
@@ -851,12 +559,12 @@ canvas{
 
 <div class="mobile-tools">
 
-  <button onclick="focusUpload()">
+  <button onclick="uploadImage()">
     <span>＋</span>
     Upload
   </button>
 
-  <button onclick="focusText()">
+  <button onclick="addText()">
     <span>T</span>
     Text
   </button>
@@ -866,7 +574,12 @@ canvas{
     Emoji
   </button>
 
-  <button onclick="downloadSticker()">
+  <button onclick="addShape()">
+    <span>◇</span>
+    Shape
+  </button>
+
+  <button onclick="exportPNG()">
     <span>↓</span>
     Export
   </button>
@@ -879,13 +592,76 @@ canvas{
 const canvas=document.getElementById("canvas");
 const ctx=canvas.getContext("2d");
 
-let uploadedImage=null;
-let zoomLevel=1;
+let layers=[];
+let selectedId=null;
 
-const $=id=>document.getElementById(id);
+let history=[];
+let future=[];
+
+let idCounter=1;
 
 
-$("image").addEventListener("change",function(e){
+function uid(){
+  return idCounter++;
+}
+
+
+function saveHistory(){
+
+  history.push(
+    JSON.stringify(layers)
+  );
+
+  if(history.length>30)
+    history.shift();
+
+  future=[];
+}
+
+
+function undo(){
+
+  if(!history.length)return;
+
+  future.push(
+    JSON.stringify(layers)
+  );
+
+  layers=JSON.parse(
+    history.pop()
+  );
+
+  selectedId=null;
+
+  render();
+}
+
+
+function redo(){
+
+  if(!future.length)return;
+
+  history.push(
+    JSON.stringify(layers)
+  );
+
+  layers=JSON.parse(
+    future.pop()
+  );
+
+  render();
+}
+
+
+function uploadImage(){
+
+  document.getElementById("file").click();
+}
+
+
+document
+.getElementById("file")
+.addEventListener("change",function(e){
 
   const file=e.target.files[0];
 
@@ -899,7 +675,26 @@ $("image").addEventListener("change",function(e){
 
     img.onload=function(){
 
-      uploadedImage=img;
+      saveHistory();
+
+      const layer={
+        id:uid(),
+        type:"image",
+        name:"Image",
+        img:img.src,
+        x:500,
+        y:430,
+        width:500,
+        height:500,
+        rotation:0,
+        opacity:1,
+        visible:true,
+        locked:false
+      };
+
+      layers.push(layer);
+      selectedId=layer.id;
+
       render();
 
     };
@@ -913,415 +708,1100 @@ $("image").addEventListener("change",function(e){
 });
 
 
-document.querySelectorAll("input,select").forEach(el=>{
-  el.addEventListener("input",render);
-  el.addEventListener("change",render);
-});
-
-
-function render(){
-
-  ctx.clearRect(0,0,1000,1000);
-
-  const shape=$("shape").value;
-
-  drawBackground(shape);
-
-  if(uploadedImage){
-    drawImage();
-  }
-
-  drawText();
-  drawEmoji();
-  drawBorder(shape);
-
-  updateValues();
-}
-
-
-function drawBackground(shape){
-
-  ctx.fillStyle=$("bgColor").value;
-
-  if(shape==="circle"){
-
-    ctx.beginPath();
-    ctx.arc(500,500,455,0,Math.PI*2);
-    ctx.fill();
-
-  }else if(shape==="rounded"){
-
-    roundedRect(40,40,920,920,90);
-    ctx.fill();
-
-  }else if(shape==="star"){
-
-    starPath(500,500,455,220,5);
-    ctx.fill();
-
-  }else{
-
-    ctx.fillRect(40,40,920,920);
-
-  }
-
-}
-
-
-function drawImage(){
-
-  const scale=
-    Number($("imageZoom").value)/100;
-
-  const rotation=
-    Number($("imageRotation").value)*Math.PI/180;
-
-  const opacity=
-    1;
-
-  const max=600*scale;
-
-  const ratio=Math.min(
-    max/uploadedImage.width,
-    max/uploadedImage.height
-  );
-
-  const w=uploadedImage.width*ratio;
-  const h=uploadedImage.height*ratio;
-
-  ctx.save();
-
-  ctx.translate(500,430);
-  ctx.rotate(rotation);
-  ctx.globalAlpha=opacity;
-
-  ctx.drawImage(
-    uploadedImage,
-    -w/2,
-    -h/2,
-    w,
-    h
-  );
-
-  ctx.restore();
-}
-
-
-function drawText(){
-
-  const text=$("text").value;
-
-  if(!text)return;
-
-  const size=Number($("textSize").value);
-
-  const x=Number($("textX").value);
-  const y=Number($("textY").value);
-
-  const rotation=
-    Number($("textRotation").value)*Math.PI/180;
-
-  const outline=
-    Number($("outline").value);
-
-  const shadow=
-    Number($("shadow").value);
-
-  ctx.save();
-
-  ctx.translate(x,y);
-  ctx.rotate(rotation);
-
-  ctx.textAlign="center";
-  ctx.textBaseline="middle";
-
-  ctx.font=
-    `900 ${size}px "${$("font").value}"`;
-
-  ctx.shadowColor="#00000080";
-  ctx.shadowBlur=shadow;
-  ctx.shadowOffsetY=5;
-
-  if(outline>0){
-
-    ctx.lineWidth=outline*2;
-    ctx.strokeStyle=$("outlineColor").value;
-
-    ctx.strokeText(text,0,0);
-
-  }
-
-  ctx.fillStyle=$("textColor").value;
-
-  ctx.fillText(text,0,0);
-
-  ctx.restore();
-}
-
-
-function drawEmoji(){
-
-  const emoji=$("emoji").value;
-
-  if(!emoji)return;
-
-  const size=Number($("emojiSize").value);
-
-  ctx.save();
-
-  ctx.font=`${size}px Arial`;
-  ctx.textAlign="center";
-  ctx.textBaseline="middle";
-
-  ctx.fillText(emoji,820,170);
-
-  ctx.restore();
-}
-
-
-function drawBorder(shape){
-
-  const width=Number($("border").value);
-
-  if(width<=0)return;
-
-  ctx.strokeStyle="#15151c";
-  ctx.lineWidth=width;
-
-  if(shape==="circle"){
-
-    ctx.beginPath();
-    ctx.arc(500,500,455,0,Math.PI*2);
-    ctx.stroke();
-
-  }else if(shape==="rounded"){
-
-    roundedRect(40,40,920,920,90);
-    ctx.stroke();
-
-  }else if(shape==="star"){
-
-    starPath(500,500,455,220,5);
-    ctx.stroke();
-
-  }else{
-
-    ctx.strokeRect(40,40,920,920);
-
-  }
-
-}
-
-
-function roundedRect(x,y,w,h,r){
-
-  ctx.beginPath();
-
-  ctx.moveTo(x+r,y);
-  ctx.lineTo(x+w-r,y);
-
-  ctx.quadraticCurveTo(
-    x+w,y,
-    x+w,y+r
-  );
-
-  ctx.lineTo(x+w,y+h-r);
-
-  ctx.quadraticCurveTo(
-    x+w,y+h,
-    x+w-r,y+h
-  );
-
-  ctx.lineTo(x+r,y+h);
-
-  ctx.quadraticCurveTo(
-    x,y+h,
-    x,y+h-r
-  );
-
-  ctx.lineTo(x,y+r);
-
-  ctx.quadraticCurveTo(
-    x,y,
-    x+r,y
-  );
-
-  ctx.closePath();
-}
-
-
-function starPath(cx,cy,outer,inner,points){
-
-  ctx.beginPath();
-
-  for(let i=0;i<points*2;i++){
-
-    const angle=
-      -Math.PI/2+
-      i*Math.PI/points;
-
-    const radius=
-      i%2===0 ? outer : inner;
-
-    const x=cx+Math.cos(angle)*radius;
-    const y=cy+Math.sin(angle)*radius;
-
-    if(i===0)ctx.moveTo(x,y);
-    else ctx.lineTo(x,y);
-
-  }
-
-  ctx.closePath();
-}
-
-
-function updateValues(){
-
-  $("sizeValue").textContent=$("textSize").value;
-  $("outlineValue").textContent=$("outline").value;
-  $("borderValue").textContent=$("border").value;
-
-  $("imageZoomValue").textContent=
-    $("imageZoom").value+"%";
-
-  $("imageRotationValue").textContent=
-    $("imageRotation").value+"°";
-
-  $("textRotationValue").textContent=
-    $("textRotation").value+"°";
-
-  $("shadowValue").textContent=
-    $("shadow").value;
-}
-
-
-function downloadSticker(){
+function addText(){
+
+  saveHistory();
+
+  const layer={
+    id:uid(),
+    type:"text",
+    name:"Text",
+    text:"Your Text",
+    x:500,
+    y:750,
+    size:70,
+    font:"Arial",
+    color:"#6c4cff",
+    outline:"#ffffff",
+    outlineWidth:5,
+    rotation:0,
+    opacity:1,
+    visible:true,
+    locked:false
+  };
+
+  layers.push(layer);
+  selectedId=layer.id;
 
   render();
-
-  const link=document.createElement("a");
-
-  link.download="stickerpro-sticker.png";
-
-  link.href=canvas.toDataURL(
-    "image/png",
-    1
-  );
-
-  link.click();
-}
-
-
-function resetStudio(){
-
-  uploadedImage=null;
-
-  $("image").value="";
-  $("text").value="StickerPro";
-  $("font").value="Arial";
-  $("textColor").value="#7055ff";
-  $("outlineColor").value="#ffffff";
-  $("textSize").value=54;
-  $("outline").value=5;
-  $("shape").value="rounded";
-  $("bgColor").value="#ffffff";
-  $("border").value=8;
-  $("imageZoom").value=100;
-  $("imageRotation").value=0;
-  $("textX").value=500;
-  $("textY").value=720;
-  $("textRotation").value=0;
-  $("shadow").value=8;
-  $("emoji").value="";
-
-  render();
-}
-
-
-function newProject(){
-  resetStudio();
-}
-
-
-function focusUpload(){
-  $("image").click();
-}
-
-
-function focusText(){
-  $("text").focus();
-  $("text").select();
 }
 
 
 function addEmoji(){
 
-  const current=$("emoji").value;
+  saveHistory();
 
-  if(!current){
-    $("emoji").value="🔥";
+  const layer={
+    id:uid(),
+    type:"emoji",
+    name:"Emoji",
+    emoji:"🔥",
+    x:800,
+    y:180,
+    size:100,
+    rotation:0,
+    visible:true,
+    locked:false
+  };
+
+  layers.push(layer);
+  selectedId=layer.id;
+
+  render();
+}
+
+
+function addShape(){
+
+  saveHistory();
+
+  const layer={
+    id:uid(),
+    type:"shape",
+    name:"Shape",
+    shape:"circle",
+    x:500,
+    y:500,
+    width:500,
+    height:500,
+    color:"#ffffff",
+    stroke:"#171923",
+    strokeWidth:10,
+    rotation:0,
+    opacity:1,
+    visible:true,
+    locked:false
+  };
+
+  layers.push(layer);
+  selectedId=layer.id;
+
+  render();
+}
+
+
+function render(){
+
+  ctx.clearRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+  layers.forEach(layer=>{
+
+    if(!layer.visible)return;
+
+    drawLayer(layer);
+
+  });
+
+  renderLayers();
+  renderProperties();
+
+  const selected=getSelected();
+
+  document.getElementById("selectedStatus").textContent=
+    selected
+    ? selected.name
+    : "No layer selected";
+}
+
+
+function drawLayer(layer){
+
+  ctx.save();
+
+  ctx.globalAlpha=
+    layer.opacity ?? 1;
+
+  if(layer.type==="image")
+    drawImage(layer);
+
+  if(layer.type==="text")
+    drawText(layer);
+
+  if(layer.type==="emoji")
+    drawEmoji(layer);
+
+  if(layer.type==="shape")
+    drawShape(layer);
+
+  ctx.restore();
+}
+
+
+function drawImage(layer){
+
+  const img=new Image();
+
+  img.onload=function(){
+
+    ctx.save();
+
+    ctx.translate(
+      layer.x,
+      layer.y
+    );
+
+    ctx.rotate(
+      layer.rotation*Math.PI/180
+    );
+
+    ctx.drawImage(
+      img,
+      -layer.width/2,
+      -layer.height/2,
+      layer.width,
+      layer.height
+    );
+
+    ctx.restore();
+
+  };
+
+  img.src=layer.img;
+}
+
+
+function drawText(layer){
+
+  ctx.save();
+
+  ctx.translate(
+    layer.x,
+    layer.y
+  );
+
+  ctx.rotate(
+    layer.rotation*Math.PI/180
+  );
+
+  ctx.font=
+    `900 ${layer.size}px "${layer.font}"`;
+
+  ctx.textAlign="center";
+  ctx.textBaseline="middle";
+
+  ctx.lineWidth=
+    layer.outlineWidth*2;
+
+  ctx.strokeStyle=
+    layer.outline;
+
+  ctx.strokeText(
+    layer.text,
+    0,
+    0
+  );
+
+  ctx.fillStyle=
+    layer.color;
+
+  ctx.fillText(
+    layer.text,
+    0,
+    0
+  );
+
+  ctx.restore();
+}
+
+
+function drawEmoji(layer){
+
+  ctx.save();
+
+  ctx.translate(
+    layer.x,
+    layer.y
+  );
+
+  ctx.rotate(
+    layer.rotation*Math.PI/180
+  );
+
+  ctx.font=
+    `${layer.size}px Arial`;
+
+  ctx.textAlign="center";
+  ctx.textBaseline="middle";
+
+  ctx.fillText(
+    layer.emoji,
+    0,
+    0
+  );
+
+  ctx.restore();
+}
+
+
+function drawShape(layer){
+
+  ctx.save();
+
+  ctx.translate(
+    layer.x,
+    layer.y
+  );
+
+  ctx.rotate(
+    layer.rotation*Math.PI/180
+  );
+
+  ctx.fillStyle=
+    layer.color;
+
+  ctx.strokeStyle=
+    layer.stroke;
+
+  ctx.lineWidth=
+    layer.strokeWidth;
+
+  if(layer.shape==="circle"){
+
+    ctx.beginPath();
+
+    ctx.ellipse(
+      0,
+      0,
+      layer.width/2,
+      layer.height/2,
+      0,
+      0,
+      Math.PI*2
+    );
+
+    ctx.fill();
+    ctx.stroke();
+
+  }else{
+
+    ctx.beginPath();
+
+    ctx.rect(
+      -layer.width/2,
+      -layer.height/2,
+      layer.width,
+      layer.height
+    );
+
+    ctx.fill();
+    ctx.stroke();
+
   }
 
-  render();
+  ctx.restore();
 }
 
 
-function cycleShape(){
+function renderLayers(){
 
-  const shapes=[
-    "rounded",
-    "circle",
-    "square",
-    "star"
+  const container=
+    document.getElementById("layers");
+
+  if(!layers.length){
+
+    container.innerHTML=
+      '<div class="empty">Add an element to start</div>';
+
+    return;
+  }
+
+  container.innerHTML="";
+
+  [...layers]
+    .reverse()
+    .forEach(layer=>{
+
+      const row=
+        document.createElement("div");
+
+      row.className=
+        "layer"+
+        (layer.id===selectedId
+          ?" selected"
+          :"");
+
+      const icon=
+        layer.type==="image"
+        ?"🖼️"
+        :layer.type==="text"
+        ?"T"
+        :layer.type==="emoji"
+        ?"☺"
+        :"◇";
+
+      row.innerHTML=`
+        <div class="layer-icon">${icon}</div>
+        <div class="layer-name">${layer.name}</div>
+        <button class="layer-mini"
+          onclick="event.stopPropagation();toggleVisibility(${layer.id})">
+          ${layer.visible?"◉":"○"}
+        </button>
+        <button class="layer-mini"
+          onclick="event.stopPropagation();toggleLock(${layer.id})">
+          ${layer.locked?"🔒":"🔓"}
+        </button>
+      `;
+
+      row.onclick=()=>{
+        selectedId=layer.id;
+        render();
+      };
+
+      container.appendChild(row);
+
+    });
+
+}
+
+
+function renderProperties(){
+
+  const panel=
+    document.getElementById("properties");
+
+  const layer=getSelected();
+
+  if(!layer){
+
+    panel.innerHTML=
+      '<div class="empty">Select a layer to edit its properties.</div>';
+
+    return;
+  }
+
+  if(layer.type==="text"){
+
+    panel.innerHTML=`
+
+      <div class="section">
+
+        <div class="label">TEXT</div>
+
+        <input
+          id="propText"
+          class="control"
+          value="${escapeHTML(layer.text)}"
+        >
+
+        <br><br>
+
+        <select id="propFont" class="control">
+          <option ${layer.font==="Arial"?"selected":""}>Arial</option>
+          <option ${layer.font==="Impact"?"selected":""}>Impact</option>
+          <option ${layer.font==="Georgia"?"selected":""}>Georgia</option>
+          <option ${layer.font==="Trebuchet MS"?"selected":""}>Trebuchet MS</option>
+          <option ${layer.font==="Courier New"?"selected":""}>Courier New</option>
+        </select>
+
+      </div>
+
+      <div class="section">
+
+        <div class="label">COLOR</div>
+
+        <div class="row">
+
+          <input
+            id="propColor"
+            class="control"
+            type="color"
+            value="${layer.color}"
+          >
+
+          <input
+            id="propOutline"
+            class="control"
+            type="color"
+            value="${layer.outline}"
+          >
+
+        </div>
+
+      </div>
+
+      <div class="section">
+
+        <div class="label">
+          SIZE
+          <span>${layer.size}px</span>
+        </div>
+
+        <input
+          id="propSize"
+          class="control"
+          type="range"
+          min="20"
+          max="180"
+          value="${layer.size}"
+        >
+
+      </div>
+
+      <div class="section">
+
+        <div class="label">POSITION X</div>
+
+        <input
+          id="propX"
+          class="control"
+          type="range"
+          min="0"
+          max="1000"
+          value="${layer.x}"
+        >
+
+        <br><br>
+
+        <div class="label">POSITION Y</div>
+
+        <input
+          id="propY"
+          class="control"
+          type="range"
+          min="0"
+          max="1000"
+          value="${layer.y}"
+        >
+
+        <br><br>
+
+        <div class="label">ROTATION</div>
+
+        <input
+          id="propRotation"
+          class="control"
+          type="range"
+          min="-180"
+          max="180"
+          value="${layer.rotation}"
+        >
+
+      </div>
+    `;
+
+    bindTextProperties(layer);
+
+  }
+
+  else if(layer.type==="emoji"){
+
+    panel.innerHTML=`
+
+      <div class="section">
+
+        <div class="label">EMOJI</div>
+
+        <input
+          id="propEmoji"
+          class="control"
+          value="${escapeHTML(layer.emoji)}"
+        >
+
+      </div>
+
+      <div class="section">
+
+        <div class="label">SIZE</div>
+
+        <input
+          id="propSize"
+          class="control"
+          type="range"
+          min="20"
+          max="200"
+          value="${layer.size}"
+        >
+
+      </div>
+
+      <div class="section">
+
+        <div class="label">POSITION X</div>
+
+        <input
+          id="propX"
+          class="control"
+          type="range"
+          min="0"
+          max="1000"
+          value="${layer.x}"
+        >
+
+        <br><br>
+
+        <div class="label">POSITION Y</div>
+
+        <input
+          id="propY"
+          class="control"
+          type="range"
+          min="0"
+          max="1000"
+          value="${layer.y}"
+        >
+
+        <br><br>
+
+        <div class="label">ROTATION</div>
+
+        <input
+          id="propRotation"
+          class="control"
+          type="range"
+          min="-180"
+          max="180"
+          value="${layer.rotation}"
+        >
+
+      </div>
+    `;
+
+    bindCommonProperties(layer);
+
+  }
+
+  else if(layer.type==="shape"){
+
+    panel.innerHTML=`
+
+      <div class="section">
+
+        <div class="label">SHAPE</div>
+
+        <select id="propShape" class="control">
+
+          <option value="circle"
+            ${layer.shape==="circle"?"selected":""}>
+            Circle
+          </option>
+
+          <option value="square"
+            ${layer.shape==="square"?"selected":""}>
+            Square
+          </option>
+
+        </select>
+
+      </div>
+
+      <div class="section">
+
+        <div class="label">FILL / STROKE</div>
+
+        <div class="row">
+
+          <input
+            id="propColor"
+            class="control"
+            type="color"
+            value="${layer.color}"
+          >
+
+          <input
+            id="propStroke"
+            class="control"
+            type="color"
+            value="${layer.stroke}"
+          >
+
+        </div>
+
+      </div>
+
+      <div class="section">
+
+        <div class="label">SIZE</div>
+
+        <input
+          id="propWidth"
+          class="control"
+          type="range"
+          min="50"
+          max="900"
+          value="${layer.width}"
+        >
+
+        <br><br>
+
+        <input
+          id="propHeight"
+          class="control"
+          type="range"
+          min="50"
+          max="900"
+          value="${layer.height}"
+        >
+
+      </div>
+
+      <div class="section">
+
+        <div class="label">POSITION X</div>
+
+        <input
+          id="propX"
+          class="control"
+          type="range"
+          min="0"
+          max="1000"
+          value="${layer.x}"
+        >
+
+        <br><br>
+
+        <div class="label">POSITION Y</div>
+
+        <input
+          id="propY"
+          class="control"
+          type="range"
+          min="0"
+          max="1000"
+          value="${layer.y}"
+        >
+
+      </div>
+    `;
+
+    bindShapeProperties(layer);
+
+  }
+
+  else if(layer.type==="image"){
+
+    panel.innerHTML=`
+
+      <div class="section">
+
+        <div class="label">IMAGE SIZE</div>
+
+        <input
+          id="propWidth"
+          class="control"
+          type="range"
+          min="50"
+          max="1000"
+          value="${layer.width}"
+        >
+
+        <br><br>
+
+        <input
+          id="propHeight"
+          class="control"
+          type="range"
+          min="50"
+          max="1000"
+          value="${layer.height}"
+        >
+
+      </div>
+
+      <div class="section">
+
+        <div class="label">POSITION X</div>
+
+        <input
+          id="propX"
+          class="control"
+          type="range"
+          min="0"
+          max="1000"
+          value="${layer.x}"
+        >
+
+        <br><br>
+
+        <div class="label">POSITION Y</div>
+
+        <input
+          id="propY"
+          class="control"
+          type="range"
+          min="0"
+          max="1000"
+          value="${layer.y}"
+        >
+
+        <br><br>
+
+        <div class="label">ROTATION</div>
+
+        <input
+          id="propRotation"
+          class="control"
+          type="range"
+          min="-180"
+          max="180"
+          value="${layer.rotation}"
+        >
+
+      </div>
+    `;
+
+    bindCommonProperties(layer);
+    bindImageProperties(layer);
+
+  }
+
+}
+
+
+function bindTextProperties(layer){
+
+  $("propText").oninput=e=>{
+    layer.text=e.target.value;
+    renderCanvasOnly();
+  };
+
+  $("propFont").onchange=e=>{
+    layer.font=e.target.value;
+    renderCanvasOnly();
+  };
+
+  $("propColor").oninput=e=>{
+    layer.color=e.target.value;
+    renderCanvasOnly();
+  };
+
+  $("propOutline").oninput=e=>{
+    layer.outline=e.target.value;
+    renderCanvasOnly();
+  };
+
+  $("propSize").oninput=e=>{
+    layer.size=Number(e.target.value);
+    renderCanvasOnly();
+    renderProperties();
+  };
+
+  $("propX").oninput=e=>{
+    layer.x=Number(e.target.value);
+    renderCanvasOnly();
+  };
+
+  $("propY").oninput=e=>{
+    layer.y=Number(e.target.value);
+    renderCanvasOnly();
+  };
+
+  $("propRotation").oninput=e=>{
+    layer.rotation=Number(e.target.value);
+    renderCanvasOnly();
+  };
+
+}
+
+
+function bindCommonProperties(layer){
+
+  $("propX").oninput=e=>{
+    layer.x=Number(e.target.value);
+    renderCanvasOnly();
+  };
+
+  $("propY").oninput=e=>{
+    layer.y=Number(e.target.value);
+    renderCanvasOnly();
+  };
+
+  $("propRotation").oninput=e=>{
+    layer.rotation=Number(e.target.value);
+    renderCanvasOnly();
+  };
+
+  if($("propSize")){
+
+    $("propSize").oninput=e=>{
+      layer.size=Number(e.target.value);
+      renderCanvasOnly();
+    };
+
+  }
+
+  if($("propEmoji")){
+
+    $("propEmoji").oninput=e=>{
+      layer.emoji=e.target.value;
+      renderCanvasOnly();
+    };
+
+  }
+
+}
+
+
+function bindImageProperties(layer){
+
+  $("propWidth").oninput=e=>{
+    layer.width=Number(e.target.value);
+    renderCanvasOnly();
+  };
+
+  $("propHeight").oninput=e=>{
+    layer.height=Number(e.target.value);
+    renderCanvasOnly();
+  };
+
+}
+
+
+function bindShapeProperties(layer){
+
+  $("propShape").onchange=e=>{
+    layer.shape=e.target.value;
+    renderCanvasOnly();
+  };
+
+  $("propColor").oninput=e=>{
+    layer.color=e.target.value;
+    renderCanvasOnly();
+  };
+
+  $("propStroke").oninput=e=>{
+    layer.stroke=e.target.value;
+    renderCanvasOnly();
+  };
+
+  $("propWidth").oninput=e=>{
+    layer.width=Number(e.target.value);
+    renderCanvasOnly();
+  };
+
+  $("propHeight").oninput=e=>{
+    layer.height=Number(e.target.value);
+    renderCanvasOnly();
+  };
+
+  $("propX").oninput=e=>{
+    layer.x=Number(e.target.value);
+    renderCanvasOnly();
+  };
+
+  $("propY").oninput=e=>{
+    layer.y=Number(e.target.value);
+    renderCanvasOnly();
+  };
+
+}
+
+
+function renderCanvasOnly(){
+
+  ctx.clearRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+  layers.forEach(layer=>{
+
+    if(layer.visible)
+      drawLayer(layer);
+
+  });
+}
+
+
+function getSelected(){
+
+  return layers.find(
+    l=>l.id===selectedId
+  );
+
+}
+
+
+function toggleVisibility(id){
+
+  const layer=
+    layers.find(l=>l.id===id);
+
+  if(!layer)return;
+
+  layer.visible=!layer.visible;
+
+  render();
+
+}
+
+
+function toggleLock(id){
+
+  const layer=
+    layers.find(l=>l.id===id);
+
+  if(!layer)return;
+
+  layer.locked=!layer.locked;
+
+  render();
+
+}
+
+
+function deleteSelected(){
+
+  if(selectedId===null)return;
+
+  saveHistory();
+
+  layers=
+    layers.filter(
+      l=>l.id!==selectedId
+    );
+
+  selectedId=null;
+
+  render();
+
+}
+
+
+function duplicateSelected(){
+
+  const layer=getSelected();
+
+  if(!layer)return;
+
+  saveHistory();
+
+  const copy=
+    JSON.parse(
+      JSON.stringify(layer)
+    );
+
+  copy.id=uid();
+  copy.name=layer.name+" Copy";
+  copy.x+=30;
+  copy.y+=30;
+
+  layers.push(copy);
+
+  selectedId=copy.id;
+
+  render();
+
+}
+
+
+function moveUp(){
+
+  const index=
+    layers.findIndex(
+      l=>l.id===selectedId
+    );
+
+  if(index<0||index===layers.length-1)
+    return;
+
+  saveHistory();
+
+  [
+    layers[index],
+    layers[index+1]
+  ]=[
+    layers[index+1],
+    layers[index]
   ];
 
-  const current=$("shape").value;
+  render();
 
-  const index=shapes.indexOf(current);
+}
 
-  $("shape").value=
-    shapes[(index+1)%shapes.length];
+
+function moveDown(){
+
+  const index=
+    layers.findIndex(
+      l=>l.id===selectedId
+    );
+
+  if(index<=0)return;
+
+  saveHistory();
+
+  [
+    layers[index],
+    layers[index-1]
+  ]=[
+    layers[index-1],
+    layers[index]
+  ];
 
   render();
+
 }
 
 
-function focusBackground(){
-  $("bgColor").click();
+function newProject(){
+
+  if(!layers.length)return;
+
+  if(!confirm("Start a new sticker?"))
+    return;
+
+  saveHistory();
+
+  layers=[];
+  selectedId=null;
+
+  render();
+
 }
 
 
-function zoomIn(){
+function exportPNG(){
 
-  zoomLevel=Math.min(1.4,zoomLevel+0.1);
+  renderCanvasOnly();
 
-  canvas.style.transform=
-    `scale(${zoomLevel})`;
+  const link=
+    document.createElement("a");
 
-  $("zoomLabel").textContent=
-    Math.round(zoomLevel*100)+"%";
+  link.download=
+    "stickerpro-design.png";
+
+  link.href=
+    canvas.toDataURL(
+      "image/png",
+      1
+    );
+
+  link.click();
+
 }
 
 
-function zoomOut(){
+function escapeHTML(str){
 
-  zoomLevel=Math.max(.7,zoomLevel-.1);
+  return String(str)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 
-  canvas.style.transform=
-    `scale(${zoomLevel})`;
-
-  $("zoomLabel").textContent=
-    Math.round(zoomLevel*100)+"%";
 }
 
 
-function undo(){
-  alert("Undo history will be added with the multi-layer editor.");
-}
-
-
-function redo(){
-  alert("Redo history will be added with the multi-layer editor.");
+function $(id){
+  return document.getElementById(id);
 }
 
 
