@@ -2,136 +2,233 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>StickerPro - Sticker Maker</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>StickerPro Studio</title>
 
 <style>
 *{box-sizing:border-box}
 
 body{
-  margin:0;
-  font-family:system-ui,-apple-system,sans-serif;
-  background:#f7f7fb;
-  color:#151728;
+margin:0;
+font-family:system-ui,-apple-system,Segoe UI,sans-serif;
+background:#f5f3ff;
+color:#151728
 }
 
 nav{
-  height:72px;
-  background:white;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 30px;
-  border-bottom:1px solid #eee;
+height:70px;
+background:#fff;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 6%;
+border-bottom:1px solid #eee;
+position:sticky;
+top:0;
+z-index:10
 }
 
 .logo{
-  font-size:28px;
-  font-weight:800;
+font-size:27px;
+font-weight:900
 }
 
-.logo span{
-  color:#6d5dfc;
-}
+.logo span{color:#7055ff}
 
 nav a{
-  text-decoration:none;
-  color:#151728;
-  margin-left:20px;
-  font-size:17px;
+text-decoration:none;
+color:#151728;
+margin-left:20px;
+font-weight:700
 }
 
 .hero{
-  text-align:center;
-  padding:55px 20px 35px;
+text-align:center;
+padding:45px 18px 25px
 }
 
 .hero h1{
-  font-size:48px;
-  margin:0 0 15px;
+font-size:clamp(40px,8vw,70px);
+margin:0;
+line-height:1.05
 }
 
-.hero h1 span{
-  color:#6d5dfc;
-}
+.hero h1 span{color:#7055ff}
 
 .hero p{
-  font-size:20px;
-  color:#666;
+font-size:19px;
+color:#666;
+max-width:650px;
+margin:18px auto
 }
 
-.creator{
-  max-width:650px;
-  margin:20px auto 70px;
-  background:white;
-  padding:30px;
-  border-radius:28px;
-  box-shadow:0 10px 35px #00000012;
+.studio{
+width:min(1100px,94%);
+margin:20px auto 60px;
+background:white;
+border-radius:28px;
+padding:22px;
+box-shadow:0 15px 50px #00000012
 }
 
-.creator h2{
-  text-align:center;
-  font-size:32px;
-  margin-top:0;
+.studio-title{
+text-align:center;
+font-size:30px;
+font-weight:800;
+margin-bottom:20px
 }
 
-input[type="text"],
-input[type="file"]{
-  width:100%;
-  padding:16px;
-  margin:10px 0;
-  border:1px solid #ddd;
-  border-radius:14px;
-  font-size:16px;
+.workspace{
+display:grid;
+grid-template-columns:350px 1fr;
+gap:25px
+}
+
+.panel{
+background:#f7f7fb;
+padding:18px;
+border-radius:20px
+}
+
+.field{
+margin-bottom:15px
+}
+
+label{
+display:block;
+font-size:14px;
+font-weight:800;
+margin-bottom:7px
+}
+
+input,select{
+width:100%;
+padding:12px;
+border:1px solid #ddd;
+border-radius:11px;
+font-size:15px;
+background:white
+}
+
+input[type=color]{
+height:45px;
+padding:4px
+}
+
+input[type=range]{
+padding:0
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px
+}
+
+.section-title{
+font-size:16px;
+font-weight:900;
+margin:18px 0 10px
 }
 
 button{
-  width:100%;
-  border:0;
-  padding:17px;
-  margin-top:12px;
-  border-radius:15px;
-  background:#6d5dfc;
-  color:white;
-  font-size:18px;
-  font-weight:700;
-  cursor:pointer;
+border:0;
+border-radius:12px;
+padding:13px;
+font-weight:800;
+font-size:15px;
+cursor:pointer
 }
 
-button:hover{
-  background:#5948ee;
+.primary{
+width:100%;
+background:#7055ff;
+color:white
 }
 
-#canvas{
-  display:block;
-  width:100%;
-  max-width:500px;
-  margin:25px auto;
-  border-radius:25px;
-  background:white;
-  border:8px solid white;
-  box-shadow:0 5px 20px #0002;
+.secondary{
+width:100%;
+background:#151728;
+color:white;
+margin-top:10px
+}
+
+.reset{
+width:100%;
+background:#eee;
+margin-top:10px
+}
+
+.canvas-box{
+background:#f1eff9;
+border-radius:22px;
+padding:18px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center
+}
+
+canvas{
+width:min(100%,650px);
+height:auto;
+background:white;
+border-radius:20px;
+box-shadow:0 10px 35px #0002
+}
+
+.tip{
+font-size:13px;
+color:#777;
+text-align:center;
+margin-top:10px
+}
+
+.store{
+margin-top:25px;
+padding:25px;
+border-radius:20px;
+background:#151728;
+color:white;
+text-align:center
+}
+
+.store h2{
+margin:0 0 8px
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin-top:20px
+}
+
+.card{
+background:#fff;
+color:#151728;
+padding:18px;
+border-radius:16px
 }
 
 footer{
-  text-align:center;
-  padding:30px;
-  color:#777;
+text-align:center;
+padding:35px;
+color:#777
 }
 
-@media(max-width:600px){
-  nav{
-    padding:0 18px;
-  }
+@media(max-width:800px){
+.workspace{
+grid-template-columns:1fr
+}
 
-  .hero h1{
-    font-size:38px;
-  }
+.cards{
+grid-template-columns:1fr
+}
 
-  .creator{
-    margin:15px;
-    padding:22px;
-  }
+.studio{
+padding:15px
+}
 }
 </style>
 </head>
@@ -139,175 +236,674 @@ footer{
 <body>
 
 <nav>
-  <div class="logo">✨ Sticker<span>Pro</span></div>
-
-  <div>
-    <a href="#creator">Create</a>
-    <a href="#store">Store</a>
-  </div>
+<div class="logo">✨ Sticker<span>Pro</span></div>
+<div>
+<a href="#studio">Create</a>
+<a href="#store">Store</a>
+</div>
 </nav>
 
 <section class="hero">
-  <h1>Create. Sell. <span>Scale.</span></h1>
-  <p>Create beautiful custom stickers and download them instantly.</p>
+<h1>Create. Sell. <span>Scale.</span></h1>
+<p>
+Turn your photos into professional custom stickers in seconds.
+</p>
 </section>
 
-<section class="creator" id="creator">
+<section class="studio" id="studio">
 
-  <h2>🎨 Sticker Creator</h2>
+<div class="studio-title">
+🎨 StickerPro Studio
+</div>
 
-  <input
-    type="text"
-    id="stickerText"
-    placeholder="Enter your sticker text"
-    value="StickerPro"
-  >
+<div class="workspace">
 
-  <input
-    type="file"
-    id="imageInput"
-    accept="image/*"
-  >
+<!-- CONTROLS -->
 
-  <button onclick="createSticker()">
-    ✨ Create Sticker
-  </button>
+<div class="panel">
 
-  <canvas id="canvas" width="800" height="800"></canvas>
+<div class="section-title">📷 Image</div>
 
-  <button onclick="downloadSticker()">
-    ⬇️ Download Sticker
-  </button>
+<div class="field">
+<label>Upload Image</label>
+<input id="image" type="file" accept="image/*">
+</div>
 
-</section>
+<div class="row">
 
-<section id="store" class="hero">
-  <h2>🛍️ Sticker Store</h2>
-  <p>More sticker packs coming soon.</p>
+<div class="field">
+<label>Image Zoom</label>
+<input id="zoom" type="range" min="50" max="180" value="100">
+</div>
+
+<div class="field">
+<label>Image Rotation</label>
+<input id="imageRotate" type="range" min="-180" max="180" value="0">
+</div>
+
+</div>
+
+<div class="field">
+<label>Image Opacity</label>
+<input id="imageOpacity" type="range" min="10" max="100" value="100">
+</div>
+
+
+<div class="section-title">✍️ Text</div>
+
+<div class="field">
+<label>Sticker Text</label>
+<input id="text" type="text" value="StickerPro" placeholder="Write something...">
+</div>
+
+<div class="row">
+
+<div class="field">
+<label>Font</label>
+<select id="font">
+<option>Arial</option>
+<option>Impact</option>
+<option>Georgia</option>
+<option>Courier New</option>
+<option>Trebuchet MS</option>
+<option>Comic Sans MS</option>
+</select>
+</div>
+
+<div class="field">
+<label>Text Color</label>
+<input id="textColor" type="color" value="#7055ff">
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="field">
+<label>Text Size</label>
+<input id="textSize" type="range" min="20" max="110" value="52">
+</div>
+
+<div class="field">
+<label>Text Rotation</label>
+<input id="textRotate" type="range" min="-180" max="180" value="0">
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="field">
+<label>Text X</label>
+<input id="textX" type="range" min="100" max="700" value="400">
+</div>
+
+<div class="field">
+<label>Text Y</label>
+<input id="textY" type="range" min="100" max="700" value="650">
+</div>
+
+</div>
+
+<div class="field">
+<label>Text Opacity</label>
+<input id="textOpacity" type="range" min="10" max="100" value="100">
+</div>
+
+
+<div class="section-title">✨ Text Effect</div>
+
+<div class="row">
+
+<div class="field">
+<label>Outline</label>
+<input id="outline" type="range" min="0" max="20" value="5">
+</div>
+
+<div class="field">
+<label>Outline Color</label>
+<input id="outlineColor" type="color" value="#ffffff">
+</div>
+
+</div>
+
+<div class="field">
+<label>Shadow</label>
+<input id="shadow" type="range" min="0" max="30" value="8">
+</div>
+
+
+<div class="section-title">🎨 Sticker Design</div>
+
+<div class="row">
+
+<div class="field">
+<label>Shape</label>
+<select id="shape">
+<option value="rounded">Rounded</option>
+<option value="circle">Circle</option>
+<option value="square">Square</option>
+<option value="star">Star</option>
+</select>
+</div>
+
+<div class="field">
+<label>Background</label>
+<input id="bgColor" type="color" value="#ffffff">
+</div>
+
+</div>
+
+<div class="field">
+<label>Border Color</label>
+<input id="borderColor" type="color" value="#151728">
+</div>
+
+<div class="field">
+<label>Border Width</label>
+<input id="borderWidth" type="range" min="0" max="25" value="10">
+</div>
+
+
+<div class="section-title">😀 Emoji</div>
+
+<div class="field">
+<input id="emoji" type="text" placeholder="😀 🔥 ❤️ ⭐">
+</div>
+
+<div class="row">
+
+<div class="field">
+<label>Emoji Size</label>
+<input id="emojiSize" type="range" min="20" max="150" value="70">
+</div>
+
+<div class="field">
+<label>Emoji X</label>
+<input id="emojiX" type="range" min="50" max="750" value="680">
+</div>
+
+</div>
+
+<div class="field">
+<label>Emoji Y</label>
+<input id="emojiY" type="range" min="50" max="750" value="120">
+</div>
+
+
+<button class="primary" onclick="createSticker()">
+✨ Create Sticker
+</button>
+
+<button class="secondary" onclick="downloadSticker()">
+⬇️ Download HD Sticker
+</button>
+
+<button class="reset" onclick="resetStudio()">
+↩️ Reset Studio
+</button>
+
+</div>
+
+
+<!-- PREVIEW -->
+
+<div class="canvas-box">
+
+<canvas id="canvas" width="1000" height="1000"></canvas>
+
+<div class="tip">
+Your sticker is generated locally in your browser.
+</div>
+
+</div>
+
+</div>
+
+
+<div class="store" id="store">
+
+<h2>🛍️ StickerPro Store</h2>
+
+<p>Premium sticker packs are coming soon.</p>
+
+<div class="cards">
+
+<div class="card">
+<h3>🔥 Trending Pack</h3>
+<p>Coming Soon</p>
+</div>
+
+<div class="card">
+<h3>😂 Meme Pack</h3>
+<p>Coming Soon</p>
+</div>
+
+<div class="card">
+<h3>❤️ Emoji Pack</h3>
+<p>Coming Soon</p>
+</div>
+
+</div>
+
+</div>
+
 </section>
 
 <footer>
-  © 2026 StickerPro
+© 2026 StickerPro • Create • Sell • Scale
 </footer>
+
 
 <script>
 
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
+const canvas=document.getElementById("canvas");
+const ctx=canvas.getContext("2d");
 
-let uploadedImage = null;
+let uploadedImage=null;
 
-function drawSticker(){
+document.getElementById("image").addEventListener("change",e=>{
 
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+const file=e.target.files[0];
 
-  // white background
-  ctx.fillStyle = "#ffffff";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
+if(!file)return;
 
-  // rounded sticker border
-  ctx.strokeStyle = "#151728";
-  ctx.lineWidth = 25;
+const reader=new FileReader();
 
-  roundRect(ctx,25,25,750,750,55);
-  ctx.stroke();
+reader.onload=event=>{
 
-  // uploaded image
-  if(uploadedImage){
+const img=new Image();
 
-    const size = 420;
-    const x = (800-size)/2;
-    const y = 100;
+img.onload=()=>{
+uploadedImage=img;
+createSticker();
+};
 
-    ctx.drawImage(
-      uploadedImage,
-      x,
-      y,
-      size,
-      size
-    );
-  }
+img.src=event.target.result;
 
-  // text
-  const text =
-    document.getElementById("stickerText").value ||
-    "StickerPro";
+};
 
-  ctx.font = "bold 60px system-ui";
-  ctx.textAlign = "center";
-  ctx.fillStyle = "#6d5dfc";
-
-  ctx.fillText(text,400,650);
-}
-
-function roundRect(ctx,x,y,w,h,r){
-
-  ctx.beginPath();
-
-  ctx.moveTo(x+r,y);
-
-  ctx.lineTo(x+w-r,y);
-  ctx.quadraticCurveTo(x+w,y,x+w,y+r);
-
-  ctx.lineTo(x+w,y+h-r);
-  ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
-
-  ctx.lineTo(x+r,y+h);
-  ctx.quadraticCurveTo(x,y+h,x,y+h-r);
-
-  ctx.lineTo(x,y+r);
-  ctx.quadraticCurveTo(x,y,x+r,y);
-
-  ctx.closePath();
-}
-
-document
-.getElementById("imageInput")
-.addEventListener("change",function(e){
-
-  const file = e.target.files[0];
-
-  if(!file) return;
-
-  const reader = new FileReader();
-
-  reader.onload = function(event){
-
-    uploadedImage = new Image();
-
-    uploadedImage.onload = function(){
-
-      drawSticker();
-
-    };
-
-    uploadedImage.src = event.target.result;
-
-  };
-
-  reader.readAsDataURL(file);
+reader.readAsDataURL(file);
 
 });
 
+
+const controls=document.querySelectorAll(
+"input,select"
+);
+
+controls.forEach(el=>{
+el.addEventListener("input",createSticker);
+});
+
+
 function createSticker(){
 
-  drawSticker();
+ctx.clearRect(0,0,1000,1000);
+
+const bg=document.getElementById("bgColor").value;
+const shape=document.getElementById("shape").value;
+
+drawBackground(bg,shape);
+
+if(uploadedImage){
+
+const zoom=Number(document.getElementById("zoom").value)/100;
+const rotation=Number(document.getElementById("imageRotate").value);
+const opacity=Number(document.getElementById("imageOpacity").value)/100;
+
+const max=600*zoom;
+
+const scale=Math.min(
+max/uploadedImage.width,
+max/uploadedImage.height
+);
+
+const w=uploadedImage.width*scale;
+const h=uploadedImage.height*scale;
+
+ctx.save();
+
+ctx.globalAlpha=opacity;
+
+ctx.translate(500,450);
+ctx.rotate(rotation*Math.PI/180);
+
+ctx.drawImage(
+uploadedImage,
+-w/2,
+-h/2,
+w,
+h
+);
+
+ctx.restore();
+}
+
+
+drawText();
+
+drawEmoji();
+
+drawBorder(shape);
 
 }
+
+
+function drawBackground(color,shape){
+
+ctx.fillStyle=color;
+
+if(shape==="circle"){
+
+ctx.beginPath();
+ctx.arc(500,500,460,0,Math.PI*2);
+ctx.fill();
+
+}
+
+else if(shape==="rounded"){
+
+roundRect(
+ctx,
+40,
+40,
+920,
+920,
+90
+);
+
+ctx.fill();
+
+}
+
+else if(shape==="star"){
+
+starPath(500,500,460,220,5);
+ctx.fill();
+
+}
+
+else{
+
+ctx.fillRect(40,40,920,920);
+
+}
+
+}
+
+
+function drawText(){
+
+const text=document.getElementById("text").value;
+
+if(!text)return;
+
+const font=document.getElementById("font").value;
+const size=Number(document.getElementById("textSize").value);
+const color=document.getElementById("textColor").value;
+
+const x=Number(document.getElementById("textX").value);
+const y=Number(document.getElementById("textY").value);
+
+const rotation=Number(
+document.getElementById("textRotate").value
+);
+
+const opacity=
+Number(document.getElementById("textOpacity").value)/100;
+
+const outline=
+Number(document.getElementById("outline").value);
+
+const outlineColor=
+document.getElementById("outlineColor").value;
+
+const shadow=
+Number(document.getElementById("shadow").value);
+
+
+ctx.save();
+
+ctx.translate(x,y);
+
+ctx.rotate(rotation*Math.PI/180);
+
+ctx.globalAlpha=opacity;
+
+ctx.font=`900 ${size}px "${font}"`;
+
+ctx.textAlign="center";
+ctx.textBaseline="middle";
+
+ctx.shadowColor="#00000066";
+ctx.shadowBlur=shadow;
+ctx.shadowOffsetY=4;
+
+if(outline>0){
+
+ctx.lineWidth=outline*2;
+ctx.strokeStyle=outlineColor;
+ctx.strokeText(text,0,0);
+
+}
+
+ctx.shadowBlur=shadow;
+
+ctx.fillStyle=color;
+ctx.fillText(text,0,0);
+
+ctx.restore();
+
+}
+
+
+function drawEmoji(){
+
+const emoji=document.getElementById("emoji").value;
+
+if(!emoji)return;
+
+const size=Number(
+document.getElementById("emojiSize").value
+);
+
+const x=Number(
+document.getElementById("emojiX").value
+);
+
+const y=Number(
+document.getElementById("emojiY").value
+);
+
+ctx.save();
+
+ctx.font=`${size}px Arial`;
+ctx.textAlign="center";
+ctx.textBaseline="middle";
+
+ctx.fillText(emoji,x,y);
+
+ctx.restore();
+
+}
+
+
+function drawBorder(shape){
+
+const width=
+Number(document.getElementById("borderWidth").value);
+
+if(width<=0)return;
+
+ctx.strokeStyle=
+document.getElementById("borderColor").value;
+
+ctx.lineWidth=width;
+
+if(shape==="circle"){
+
+ctx.beginPath();
+ctx.arc(500,500,460,0,Math.PI*2);
+ctx.stroke();
+
+}
+
+else if(shape==="rounded"){
+
+roundRect(
+ctx,
+40,
+40,
+920,
+920,
+90
+);
+
+ctx.stroke();
+
+}
+
+else if(shape==="star"){
+
+starPath(500,500,460,220,5);
+ctx.stroke();
+
+}
+
+else{
+
+ctx.strokeRect(40,40,920,920);
+
+}
+
+}
+
+
+function roundRect(ctx,x,y,w,h,r){
+
+ctx.beginPath();
+
+ctx.moveTo(x+r,y);
+ctx.lineTo(x+w-r,y);
+
+ctx.quadraticCurveTo(
+x+w,y,
+x+w,y+r
+);
+
+ctx.lineTo(x+w,y+h-r);
+
+ctx.quadraticCurveTo(
+x+w,y+h,
+x+w-r,y+h
+);
+
+ctx.lineTo(x+r,y+h);
+
+ctx.quadraticCurveTo(
+x,y+h,
+x,y+h-r
+);
+
+ctx.lineTo(x,y+r);
+
+ctx.quadraticCurveTo(
+x,y,
+x+r,y
+);
+
+ctx.closePath();
+
+}
+
+
+function starPath(cx,cy,outer,inner,points){
+
+ctx.beginPath();
+
+for(let i=0;i<points*2;i++){
+
+const angle=
+Math.PI/2+
+i*Math.PI/points;
+
+const radius=
+i%2===0 ? outer : inner;
+
+const x=
+cx+Math.cos(angle)*radius;
+
+const y=
+cy-Math.sin(angle)*radius;
+
+if(i===0)
+ctx.moveTo(x,y);
+else
+ctx.lineTo(x,y);
+
+}
+
+ctx.closePath();
+
+}
+
 
 function downloadSticker(){
 
-  const link = document.createElement("a");
+createSticker();
 
-  link.download = "stickerpro.png";
+const link=document.createElement("a");
 
-  link.href = canvas.toDataURL("image/png");
+link.download=
+"stickerpro-hd-sticker.png";
 
-  link.click();
+link.href=
+canvas.toDataURL("image/png");
+
+link.click();
 
 }
 
-drawSticker();
+
+function resetStudio(){
+
+uploadedImage=null;
+
+document.getElementById("image").value="";
+
+document.getElementById("text").value="StickerPro";
+
+document.getElementById("font").value="Arial";
+
+document.getElementById("textColor").value="#7055ff";
+
+document.getElementById("textSize").value=52;
+
+document.getElementById("textRotate").value=0;
+
+document.getElementById("textX").value=400;
+
+document.getElementById("textY").value=650;
+
+document.getElementById("textOpacity").value=100;
+
+document.getElementById("outline").value=5;
+
+document.getElementById("shadow").value=8;
+
+document.getElementById("emoji").value="";
+
+document.getElementById("shape").value="rounded";
+
+document.getElementById("borderWidth").value=10;
+
+createSticker();
+
+}
+
+
+createSticker();
 
 </script>
 
