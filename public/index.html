@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StickerPro | Create & Sell Stickers</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:#f7f7fb;
+  color:#151728;
+}
+
+nav{
+  background:#fff;
+  padding:18px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #eee;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:800;
+}
+
+.logo span{
+  color:#6d5dfc;
+}
+
+nav a{
+  text-decoration:none;
+  color:#333;
+  margin-left:20px;
+  font-weight:600;
+}
+
+.hero{
+  padding:70px 6%;
+  text-align:center;
+  background:linear-gradient(135deg,#f1efff,#fff);
+}
+
+.hero h1{
+  font-size:clamp(38px,7vw,72px);
+  line-height:1.05;
+  margin-bottom:20px;
+}
+
+.hero h1 span{
+  color:#6d5dfc;
+}
+
+.hero p{
+  font-size:18px;
+  color:#666;
+  max-width:650px;
+  margin:auto;
+}
+
+.btn{
+  border:0;
+  background:#6d5dfc;
+  color:white;
+  padding:14px 22px;
+  border-radius:12px;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  margin-top:25px;
+}
+
+.btn:hover{
+  opacity:.9;
+}
+
+section{
+  padding:55px 6%;
+}
+
+.title{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.title h2{
+  font-size:34px;
+}
+
+.creator{
+  max-width:900px;
+  margin:auto;
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 10px 35px rgba(0,0,0,.07);
+}
+
+.creator-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.controls{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+input,textarea{
+  width:100%;
+  padding:14px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  font-size:16px;
+  outline:none;
+}
+
+input:focus,textarea:focus{
+  border-color:#6d5dfc;
+}
+
+.preview{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#f3f3f7;
+  border-radius:15px;
+  min-height:320px;
+}
+
+canvas{
+  max-width:100%;
+  border-radius:12px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.card{
+  background:white;
+  border-radius:18px;
+  padding:22px;
+  text-align:center;
+  box-shadow:0 8px 25px rgba(0,0,0,.06);
+}
+
+.emoji{
+  font-size:60px;
+  margin-bottom:15px;
+}
+
+.price{
+  font-size:22px;
+  font-weight:800;
+  margin-top:10px;
+}
+
+.card button{
+  width:100%;
+  margin-top:15px;
+}
+
+.pay{
+  max-width:600px;
+  margin:auto;
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.07);
+}
+
+.pay h2{
+  margin-bottom:20px;
+}
+
+.pay input{
+  margin-bottom:12px;
+}
+
+.status{
+  margin-top:15px;
+  padding:12px;
+  border-radius:10px;
+  display:none;
+  background:#eef2ff;
+}
+
+footer{
+  text-align:center;
+  padding:35px;
+  background:#151728;
+  color:white;
+}
+
+@media(max-width:700px){
+  .creator-grid{
+    grid-template-columns:1fr;
+  }
+
+  nav{
+    padding:15px 4%;
+  }
+
+  nav a{
+    margin-left:8px;
+    font-size:14px;
+  }
+
+  section{
+    padding:40px 5%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">✨ Sticker<span>Pro</span></div>
+
+  <div>
+    <a href="#creator">Create</a>
+    <a href="#store">Store</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Create. Sell. <span>Scale.</span></h1>
+  <p>
+    Create beautiful custom stickers, download them instantly,
+    and explore our sticker collection.
+  </p>
+  <a href="#creator">
+    <button class="btn">Create Your Sticker</button>
+  </a>
+</section>
+
+<section id="creator">
+
+  <div class="title">
+    <h2>🎨 Sticker Creator</h2>
+    <p>Make your own sticker in seconds.</p>
+  </div>
+
+  <div class="creator">
+
+    <div class="creator-grid">
+
+      <div class="controls">
+
+        <input
+          id="stickerText"
+          type="text"
+          placeholder="Enter your sticker text"
+          value="StickerPro"
+        >
+
+        <input
+          id="textColor"
+          type="color"
+          value="#6d5dfc"
+        >
+
+        <input
+          id="bgColor"
+          type="color"
+          value="#ffffff"
+        >
+
+        <button class="btn" onclick="downloadSticker()">
+          ⬇️ Download Sticker
+        </button>
+
+      </div>
+
+      <div class="preview">
+        <canvas id="stickerCanvas" width="500" height="500"></canvas>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="store">
+
+  <div class="title">
+    <h2>🛍️ Sticker Store</h2>
+    <p>Choose your favorite sticker pack.</p>
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="emoji">🔥</div>
+      <h3>Fire Pack</h3>
+      <p>10 premium fire stickers</p>
+      <div class="price">₹99</div>
+      <button class="btn" onclick="selectPack('Fire Pack',99)">
+        Buy Now
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="emoji">😎</div>
+      <h3>Cool Pack</h3>
+      <p>10 cool & funny stickers</p>
+      <div class="price">₹149</div>
+      <button class="btn" onclick="selectPack('Cool Pack',149)">
+        Buy Now
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="emoji">❤️</div>
+      <h3>Love Pack</h3>
+      <p>10 cute love stickers</p>
+      <div class="price">₹129</div>
+      <button class="btn" onclick="selectPack('Love Pack',129)">
+        Buy Now
+      </button>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="pay">
+
+  <div class="title">
+    <h2>💳 Checkout</h2>
+    <p>Enter your details to continue.</p>
+  </div>
+
+  <div class="pay">
+
+    <h2 id="selectedPack">Sticker Pack</h2>
+
+    <input
+      id="customerName"
+      type="text"
+      placeholder="Your name"
+    >
+
+    <input
+      id="customerEmail"
+      type="email"
+      placeholder="Your email"
+    >
+
+    <button class="btn" onclick="startPayment()">
+      Pay Now
+    </button>
+
+    <div class="status" id="status"></div>
+
+  </div>
+
+</section>
+
+<footer>
+  © 2026 StickerPro. Create. Sell. Scale.
+</footer>
+
+<script>
+
+const canvas = document.getElementById("stickerCanvas");
+const ctx = canvas.getContext("2d");
+
+const textInput = document.getElementById("stickerText");
+const textColor = document.getElementById("textColor");
+const bgColor = document.getElementById("bgColor");
+
+function drawSticker(){
+
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  // Background
+  ctx.fillStyle = bgColor.value;
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  // Sticker border
+  ctx.strokeStyle = "#151728";
+  ctx.lineWidth = 15;
+
+  roundRect(
+    ctx,
+    25,
+    25,
+    canvas.width - 50,
+    canvas.height - 50,
+    45
+  );
+
+  ctx.stroke();
+
+  // Text
+  ctx.fillStyle = textColor.value;
+  ctx.font = "bold 55px system-ui";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  const text = textInput.value || "StickerPro";
+
+  ctx.fillText(
+    text.substring(0,18),
+    canvas.width / 2,
+    canvas.height / 2
+  );
+}
+
+function roundRect(ctx,x,y,w,h,r){
+
+  ctx.beginPath();
+
+  ctx.moveTo(x+r,y);
+
+  ctx.lineTo(x+w-r,y);
+
+  ctx.quadraticCurveTo(
+    x+w,y,
+    x+w,y+r
+  );
+
+  ctx.lineTo(x+w,y+h-r);
+
+  ctx.quadraticCurveTo(
+    x+w,y+h,
+    x+w-r,y+h
+  );
+
+  ctx.lineTo(x+r,y+h);
+
+  ctx.quadraticCurveTo(
+    x,y+h,
+    x,y+h-r
+  );
+
+  ctx.lineTo(x,y+r);
+
+  ctx.quadraticCurveTo(
+    x,y,
+    x+r,y
+  );
+
+  ctx.closePath();
+}
+
+function downloadSticker(){
+
+  const link = document.createElement("a");
+
+  link.download = "stickerpro-sticker.png";
+
+  link.href = canvas.toDataURL("image/png");
+
+  link.click();
+}
+
+textInput.addEventListener("input",drawSticker);
+textColor.addEventListener("input",drawSticker);
+bgColor.addEventListener("input",drawSticker);
+
+drawSticker();
+
+let selectedPrice = 99;
+let selectedName = "Fire Pack";
+
+function selectPack(name,price){
+
+  selectedName = name;
+  selectedPrice = price;
+
+  document.getElementById("selectedPack").innerText =
+    name + " - ₹" + price;
+
+  document.getElementById("pay")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+}
+
+async function startPayment(){
+
+  const name =
+    document.getElementById("customerName").value.trim();
+
+  const email =
+    document.getElementById("customerEmail").value.trim();
+
+  const status =
+    document.getElementById("status");
+
+  if(!name || !email){
+
+    status.style.display = "block";
+
+    status.innerText =
+      "Please enter your name and email.";
+
+    return;
+  }
+
+  status.style.display = "block";
+
+  status.innerText =
+    "Creating payment...";
+
+  try{
+
+    const response = await fetch("/api/payment",{
+
+      method:"POST",
+
+      headers:{
+        "Content-Type":"application/json"
+      },
+
+      body:JSON.stringify({
+
+        name:name,
+        email:email,
+        product:selectedName,
+        amount:selectedPrice
+
+      })
+
+    });
+
+    const data = await response.json();
+
+    if(data.checkoutUrl){
+
+      window.location.href = data.checkoutUrl;
+
+    }else{
+
+      status.innerText =
+        data.message ||
+        "Payment service is not configured yet.";
+
+    }
+
+  }catch(error){
+
+    status.innerText =
+      "Payment server is not responding yet.";
+
+    console.error(error);
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
