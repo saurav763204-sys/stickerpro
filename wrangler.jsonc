@@ -4,5 +4,5 @@
   "main":/worker.js",
   "compatibility_date":"2026-08-17",
   "assets":{"directory":".,"binding":"ASSETS","run_worker_first":["/api/*"]},
-  "d1_databases":[{"binding":"DB","database_name":"stickerpro-db","database_id":"REPLACE_WITH_D1_DATABASE_ID"}]
+  "d1_databases":[{"binding":"DB","database_name":"stickerpro-db","database_id":"88f80cd6-e18c-4d28-b6b2-425cfccc2506"}]
 }
